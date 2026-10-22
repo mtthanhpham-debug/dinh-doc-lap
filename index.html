@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏛️ Dinh Độc Lập: Giải Mã Di Sản Kiến Trúc & Tương Lai 2050</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Instrument Serif, Newsreader, Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sketchPaper: '#f7f3ec',
+                        sketchDark: '#2b2721',
+                        sketchBrown: '#6b5b4e',
+                        sketchGold: '#c29b38',
+                        sketchRed: '#9e2a2b',
+                        sketchBorder: '#d6cbb8'
+                    },
+                    fontFamily: {
+                        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+                        news: ['Newsreader', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f1ebd9;
+            color: #2b2721;
+            font-family: 'Newsreader', serif;
+            background-image: radial-gradient(#e4dac2 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .sketch-heading {
+            font-family: 'Instrument Serif', serif;
+            letter-spacing: 0.02em;
+        }
+        .paper-card {
+            background: #fffdf9;
+            border: 1px solid #d6cbb8;
+            box-shadow: 4px 6px 20px rgba(43, 39, 33, 0.06), inset 0 0 40px rgba(244, 236, 216, 0.4);
+            position: relative;
+        }
+        .paper-card::after {
+            content: "";
+            position: absolute;
+            bottom: 0; right: 0;
+            width: 30px; height: 30px;
+            background: linear-gradient(135deg, transparent 50%, #d6cbb8 50%);
+            pointer-events: none;
+        }
+        /* Magnifying glass style */
+        #magnifier {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            border: 4px solid #6b5b4e;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: none;
+            display: none;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3), inset 0 0 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            background: rgba(255,253,249,0.95);
+        }
+        #magnifier-content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-origin: top left;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1ebd9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c29b38;
+            border-radius: 4px;
+        }
+        .stamp {
+            border: 2px dashed #9e2a2b;
+            color: #9e2a2b;
+            transform: rotate(-3deg);
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col selection:bg-amber-200 selection:text-amber-900">
+
+    <!-- Magnifying Glass Element -->
+    <div id="magnifier">
+        <div id="magnifier-content"></div>
+    </div>
+
+    <!-- Top Navigation / Sketchbook Toolbar -->
+    <header class="sticky top-0 z-50 bg-[#f7f3ec]/90 backdrop-blur-md border-b border-[#d6cbb8] px-4 py-3 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded bg-[#2b2721] text-[#f7f3ec] flex items-center justify-center font-serif text-2xl font-bold shadow">🏛️</div>
+                <div>
+                    <h1 class="sketch-heading text-2xl md:text-3xl font-normal leading-none text-[#2b2721]">Dinh Độc Lập</h1>
+                    <p class="font-sans text-xs text-[#6b5b4e] tracking-wider">SỔ TAY DI SẢN & TƯƠNG LAI 2050</p>
+                </div>
+            </div>
+
+            <!-- Plate Index Navigation -->
+            <nav class="hidden lg:flex items-center space-x-1 overflow-x-auto py-1 font-sans text-xs">
+                <button onclick="scrollToSection('plate-1')" class="px-3 py-1.5 rounded bg-[#2b2721] text-white font-medium hover:bg-[#6b5b4e] transition">I. Tổng Quan</button>
+                <button onclick="scrollToSection('plate-2')" class="px-3 py-1.5 rounded hover:bg-[#e4dac2] text-[#2b2721] font-medium transition">II. Lịch Sử (1868-1975)</button>
+                <button onclick="scrollToSection('plate-3')" class="px-3 py-1.5 rounded hover:bg-[#e4dac2] text-[#2b2721] font-medium transition">III. Triết Lý Chữ Hán</button>
+                <button onclick="scrollToSection('plate-4')" class="px-3 py-1.5 rounded hover:bg-[#e4dac2] text-[#2b2721] font-medium transition">IV. Không Gian & Hầm</button>
+                <button onclick="scrollToSection('plate-5')" class="px-3 py-1.5 rounded hover:bg-[#e4dac2] text-[#2b2721] font-medium transition">V. Số Hóa 2050</button>
+                <button onclick="scrollToSection('plate-6')" class="px-3 py-1.5 rounded hover:bg-[#e4dac2] text-[#2b2721] font-medium transition">VI. FAQ</button>
+                <button onclick="scrollToSection('plate-7')" class="px-3 py-1.5 rounded hover:bg-[#e4dac2] text-[#2b2721] font-medium transition">VII. Cẩm Nang & Vé</button>
+            </nav>
+
+            <!-- Controls: Zoom & Magnifier & Print -->
+            <div class="flex items-center space-x-2 font-sans">
+                <button onclick="toggleMagnifier()" id="mag-btn" class="px-3 py-1.5 rounded border border-[#6b5b4e] text-xs font-medium hover:bg-[#2b2721] hover:text-white transition flex items-center space-x-1.5">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span class="hidden sm:inline">Kính Lúp</span>
+                </button>
+                <div class="flex items-center border border-[#6b5b4e] rounded overflow-hidden">
+                    <button onclick="adjustZoom(-0.1)" class="px-2.5 py-1 text-xs hover:bg-[#6b5b4e] hover:text-white transition" title="Thu nhỏ">-</button>
+                    <span id="zoom-level" class="px-2 text-xs font-mono text-[#6b5b4e]">100%</span>
+                    <button onclick="adjustZoom(0.1)" class="px-2.5 py-1 text-xs hover:bg-[#6b5b4e] hover:text-white transition" title="Phóng to">+</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container with Zoom Support -->
+    <main id="zoom-container" class="flex-grow w-full max-w-7xl mx-auto px-4 py-8 space-y-16 transition-transform duration-200 origin-top">
+
+        <!-- PLATE I: BANNER & QUICK STATS (Module 1) -->
+        <section id="plate-1" class="paper-card p-6 md:p-12 rounded-lg relative overflow-hidden">
+            <div class="absolute top-6 right-6 stamp px-3 py-1 text-xs rounded opacity-80 pointer-events-none hidden sm:block">
+                Di Tích Quốc Gia Đặc Biệt
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="inline-block px-3 py-1 bg-[#c29b38]/20 text-[#825e11] text-xs font-sans font-semibold rounded tracking-wider uppercase">Plate I • Khởi Đầu Hành Trình</span>
+                    <h2 class="sketch-heading text-5xl md:text-7xl font-normal leading-tight text-[#2b2721]">
+                        DINH ĐỘC LẬP – HỘI TỤ DI SẢN VÀ LỊCH SỬ DÂN TỘC
+                    </h2>
+                    <p class="text-xl md:text-2xl font-news italic text-[#6b5b4e] leading-relaxed">
+                        Kiệt tác Kiến trúc Hiện đại Á Đông – Chứng nhân của những Thời khắc Chuyển mình Trọng đại.
+                    </p>
+                    <p class="font-sans text-base text-[#2b2721]/90 leading-relaxed">
+                        Chào mừng bạn đến với Trang thông tin Di sản & Bảo tàng Số Dinh Độc Lập (Hội trường Thống Nhất). Nơi đây không chỉ là một công trình kiến trúc quy mô, tráng lệ bậc nhất Việt Nam thế kỷ 20 do Khôi nguyên La Mã – Kiến trúc sư Ngô Viết Thụ sáng tạo, mà còn là trái tim lịch sử, nơi ghi dấu sự kết thúc của cuộc chiến tranh khốc liệt và mở ra kỷ nguyên hòa bình, thống nhất cho dân tộc. Hãy cùng chúng tôi thực hiện chuyến hành trình du hành không gian và thời gian.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="rounded-lg overflow-hidden border border-[#d6cbb8] shadow-md group">
+                        <img src="https://placehold.co/800x600/2b2721/f4ecd8?text=Dinh+Doc+Lap+Facade" onerror="this.src='https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80'" alt="Dinh Độc Lập" class="w-full h-72 object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openModal(this.src, 'Mặt tiền Dinh Độc Lập với đài phun nước trung tâm')">
+                    </div>
+                    <div class="text-center font-sans text-xs italic text-[#6b5b4e]">
+                        Hình 1.1: Mặt tiền Dinh Độc Lập và không gian xanh mát giữa lòng Quận 1, TP.HCM.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats Grid -->
+            <div class="mt-12 pt-8 border-t border-[#d6cbb8] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-sans">
+                <div class="p-4 rounded bg-[#f4ecd8]/60 border border-[#d6cbb8]">
+                    <div class="text-3xl mb-2">🌳</div>
+                    <div class="font-bold text-lg text-[#2b2721]">12 Hecta Khuôn Viên</div>
+                    <p class="text-xs text-[#6b5b4e] mt-1">Tọa lạc tại vị trí đắc địa trung tâm Quận 1, bao bọc bởi thảm cỏ và hàng trăm cây cổ thụ trăm tuổi.</p>
+                </div>
+                <div class="p-4 rounded bg-[#f4ecd8]/60 border border-[#d6cbb8]">
+                    <div class="text-3xl mb-2">🏛️</div>
+                    <div class="font-bold text-lg text-[#2b2721]">20.000 m² Diện Tích</div>
+                    <p class="text-xs text-[#6b5b4e] mt-1">Gồm 3 tầng chính, 2 tầng hầm, 1 sân thượng, lầu vọng cảnh và hơn 100 phòng chức năng độc bản.</p>
+                </div>
+                <div class="p-4 rounded bg-[#f4ecd8]/60 border border-[#d6cbb8]">
+                    <div class="text-3xl mb-2">🛡️</div>
+                    <div class="font-bold text-lg text-[#2b2721]">4.000 Tấn Lực Chịu Bom</div>
+                    <p class="text-xs text-[#6b5b4e] mt-1">Cấu trúc hầm chiến lược đúc bê tông cốt thép đặc biệt, chịu được đạn pháo và bom phá quy mô lớn.</p>
+                </div>
+                <div class="p-4 rounded bg-[#f4ecd8]/60 border border-[#d6cbb8]">
+                    <div class="text-3xl mb-2">🏆</div>
+                    <div class="font-bold text-lg text-[#2b2721]">2 Bảo Vật Quốc Gia</div>
+                    <p class="text-xs text-[#6b5b4e] mt-1">Nơi lưu giữ xe tăng 390 và xe tăng 843 – hai chứng nhân lịch sử húc cổng Dinh trưa 30/04/1975.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLATE II: LỊCH SỬ HÌNH THÀNH 1868 - 1975 (Module 2) -->
+        <section id="plate-2" class="paper-card p-6 md:p-12 rounded-lg">
+            <div class="flex items-center justify-between mb-8 border-b border-[#d6cbb8] pb-4">
+                <div>
+                    <span class="text-xs font-sans font-semibold text-[#825e11] uppercase tracking-wider">Plate II • Biên Niên Sử</span>
+                    <h2 class="sketch-heading text-4xl md:text-5xl text-[#2b2721]">LỊCH SỬ HÌNH THÀNH (1868 – 1975) & DẤU ẤN</h2>
+                </div>
+                <div class="hidden md:block font-mono text-xs text-[#6b5b4e]">
+                    [ARCHIVES: SAIGON HERITAGE]
+                </div>
+            </div>
+
+            <div class="space-y-12 font-sans">
+                <!-- Era 1 -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5">
+                        <img src="https://placehold.co/800x500/2b2721/f4ecd8?text=Dinh+Norodom+1868" onerror="this.src='https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=800&q=80'" alt="Dinh Norodom" class="rounded border border-[#d6cbb8] shadow w-full h-64 object-cover cursor-pointer" onclick="openModal(this.src, 'Dinh Norodom thời kỳ thuộc địa')">
+                    </div>
+                    <div class="lg:col-span-7 space-y-3">
+                        <span class="inline-block px-2.5 py-1 bg-[#6b5b4e]/10 text-[#6b5b4e] text-xs font-bold rounded">1868 – 1954</span>
+                        <h3 class="sketch-heading text-3xl text-[#2b2721]">1. Thời Kỳ Dinh Norodom – Tiền Thân Thuộc Địa</h3>
+                        <p class="font-news text-lg text-[#2b2721]/90 leading-relaxed">
+                            Khởi công ngày 23/02/1868 theo đồ án của KTS Achille-Antoine Hermitte nhằm làm Phủ Thống đốc Nam Kỳ. Đến năm 1887, khi Liên bang Đông Dương thành lập, nơi đây trở thành trụ sở của Toàn quyền Đông Dương. Tháng 9/1945 Pháp quay lại chiếm Sài Gòn. Ngày 07/09/1954 bàn giao lại cho chính quyền Quốc gia Việt Nam, Tổng thống Ngô Đình Diệm đổi tên thành Dinh Độc Lập.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Era 2 -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-3 order-2 lg:order-1">
+                        <span class="inline-block px-2.5 py-1 bg-[#9e2a2b]/10 text-[#9e2a2b] text-xs font-bold rounded">1962 – 1966</span>
+                        <h3 class="sketch-heading text-3xl text-[#2b2721]">2. Biến Động Ném Bom 1962 & Tái Thiết Kiến Trúc Mới</h3>
+                        <p class="font-news text-lg text-[#2b2721]/90 leading-relaxed">
+                            Ngày 27/02/1962, hai phi công phe Việt Nam Cộng hòa ném bom làm sập cánh trái Dinh cũ. Không thể phục hồi, Tổng thống Ngô Đình Diệm quyết định tổ chức thi thiết kế. Đồ án của KTS Ngô Viết Thụ (Khôi nguyên La Mã) chiến thắng. Công trình khởi công 01/07/1962 và khánh thành ngày 31/10/1966, mang đậm triết lý Á Đông độc bản.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-5 order-1 lg:order-2">
+                        <img src="https://placehold.co/800x500/2b2721/f4ecd8?text=Bombing+Historical+Photo" onerror="this.src='https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80'" alt="Sự kiện ném bom" class="rounded border border-[#d6cbb8] shadow w-full h-64 object-cover cursor-pointer" onclick="openModal(this.src, 'Tư liệu lịch sử sự kiện tái thiết Dinh')">
+                    </div>
+                </div>
+
+                <!-- Era 3 -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5">
+                        <img src="https://placehold.co/800x500/2b2721/f4ecd8?text=Tank+390+Gate+30041975" onerror="this.src='https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80'" alt="Xe tăng 390 húc cổng" class="rounded border border-[#d6cbb8] shadow w-full h-64 object-cover cursor-pointer" onclick="openModal(this.src, 'Xe tăng 390 húc văng cổng chính Dinh Độc Lập trưa 30/04/1975')">
+                    </div>
+                    <div class="lg:col-span-7 space-y-3">
+                        <span class="inline-block px-2.5 py-1 bg-green-700/10 text-green-800 text-xs font-bold rounded">30/04/1975</span>
+                        <h3 class="sketch-heading text-3xl text-[#2b2721]">3. Mốc Son Lịch Sử 30/04/1975 – Thời Khắc Hòa Bình</h3>
+                        <p class="font-news text-lg text-[#2b2721]/90 leading-relaxed">
+                            10 giờ 45 phút ngày 30/04/1975, xe tăng số hiệu 390 (Đại đội trưởng Vũ Đăng Toàn chỉ huy) húc văng cổng chính Dinh Độc Lập. Tiếp đó xe tăng 843 tiến vào sân. 11 giờ 30 phút, Trung úy Bùi Quang Thận kéo lá cờ Mặt trận Dân tộc Giải phóng miền Nam Việt Nam lên đỉnh cột cờ, kết thúc chiến tranh, đất nước thống nhất.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLATE III: TRIẾT LÝ KIẾN TRÚC Á ĐÔNG & CHỮ HÁN (Module 3) -->
+        <section id="plate-3" class="paper-card p-6 md:p-12 rounded-lg">
+            <div class="flex items-center justify-between mb-8 border-b border-[#d6cbb8] pb-4">
+                <div>
+                    <span class="text-xs font-sans font-semibold text-[#825e11] uppercase tracking-wider">Plate III • Giải Mã Kiến Trúc</span>
+                    <h2 class="sketch-heading text-4xl md:text-5xl text-[#2b2721]">TRIẾT LÝ KIẾN TRÚC Á ĐÔNG & NGHỆ THUẬT CHỮ HÁN</h2>
+                </div>
+            </div>
+
+            <p class="font-news text-xl text-[#6b5b4e] mb-8 leading-relaxed">
+                KTS Ngô Viết Thụ đã tài tình kết hợp kết cấu bê tông hiện đại phương Tây với nghệ thuật chiết tự chữ Hán truyền thống, gửi gắm triết lý nhân văn và khát vọng quốc thái dân an vào từng khối hình công trình.
+            </p>
+
+            <!-- Character Tabs Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-8 font-sans">
+                <button onclick="showChineseChar('ji')" id="btn-ji" class="p-4 rounded border border-[#d6cbb8] bg-[#f4ecd8] text-center font-bold hover:bg-[#2b2721] hover:text-white transition">
+                    <div class="text-3xl font-serif mb-1">吉</div>
+                    <div class="text-xs">Chữ CÁT (May mắn)</div>
+                </button>
+                <button onclick="showChineseChar('kou')" id="btn-kou" class="p-4 rounded border border-[#d6cbb8] bg-white text-center font-bold hover:bg-[#2b2721] hover:text-white transition">
+                    <div class="text-3xl font-serif mb-1">口</div>
+                    <div class="text-xs">Chữ KHẨU (Ngôn luận)</div>
+                </button>
+                <button onclick="showChineseChar('zhong')" id="btn-zhong" class="p-4 rounded border border-[#d6cbb8] bg-white text-center font-bold hover:bg-[#2b2721] hover:text-white transition">
+                    <div class="text-3xl font-serif mb-1">中</div>
+                    <div class="text-xs">Chữ TRUNG (Trung kiên)</div>
+                </button>
+                <button onclick="showChineseChar('san')" id="btn-san" class="p-4 rounded border border-[#d6cbb8] bg-white text-center font-bold hover:bg-[#2b2721] hover:text-white transition">
+                    <div class="text-3xl font-serif mb-1">三</div>
+                    <div class="text-xs">Chữ TAM (Nhân-Minh-Võ)</div>
+                </button>
+                <button onclick="showChineseChar('zhu')" id="btn-zhu" class="p-4 rounded border border-[#d6cbb8] bg-white text-center font-bold hover:bg-[#2b2721] hover:text-white transition">
+                    <div class="text-3xl font-serif mb-1">主</div>
+                    <div class="text-xs">Chữ CHỦ (Độc lập)</div>
+                </button>
+                <button onclick="showChineseChar('xing')" id="btn-xing" class="p-4 rounded border border-[#d6cbb8] bg-white text-center font-bold hover:bg-[#2b2721] hover:text-white transition">
+                    <div class="text-3xl font-serif mb-1">興</div>
+                    <div class="text-xs">Chữ HƯNG (Hưng thịnh)</div>
+                </button>
+            </div>
+
+            <!-- Character Detail Display Box -->
+            <div id="char-detail-box" class="p-8 rounded bg-[#f4ecd8]/80 border border-[#d6cbb8] grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                <div class="md:col-span-4 text-center border-b md:border-b-0 md:border-r border-[#d6cbb8] pb-6 md:pb-0">
+                    <div id="char-symbol" class="text-8xl font-serif text-[#9e2a2b]">吉</div>
+                    <div id="char-title" class="font-sans font-bold text-lg text-[#2b2721] mt-2">Chữ CÁT (吉) – Ý Niệm May Mắn & Thịnh Vượng</div>
+                </div>
+                <div class="md:col-span-8 font-news text-lg text-[#2b2721] leading-relaxed">
+                    <p id="char-desc">
+                        Toàn bộ bình diện mặt bằng tổng thể của Dinh được quy hoạch uốn lượn sắp đặt gợi thành hình chữ Cát. Vị trí trung tâm của hình chữ này chính là Phòng Trình Quốc thư – nơi tiếp đón đại diện các quốc gia trên thế giới, gửi gắm ước nguyện hòa bình, may mắn cho dân tộc.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bamboo Screen Section -->
+            <div class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-8 border-t border-[#d6cbb8]">
+                <div class="lg:col-span-7 space-y-4">
+                    <h3 class="sketch-heading text-3xl text-[#2b2721]">Rèm Hoa Đá (Mành Bê Tông Đốt Trúc)</h3>
+                    <p class="font-news text-lg text-[#2b2721]/90 leading-relaxed">
+                        Tầng 2 của Dinh được bao bọc bởi hệ thống bức rèm bê tông đúc sẵn hình các đốt trúc thanh thoát, nâng cấp từ kiểu cửa bàn khoa cung điện Huế cổ truyền. Bức rèm đóng vai trò như lớp áo giáp kiến trúc giúp cản bớt ánh nắng gắt hướng Tây, điều tiết ánh sáng dịu nhẹ và cho phép gió tự nhiên lưu thông liên tục, giữ công trình luôn mát mẻ trong điều kiện khí hậu nhiệt đới Sài Gòn.
+                    </p>
+                </div>
+                <div class="lg:col-span-5">
+                    <img src="https://placehold.co/800x600/2b2721/f4ecd8?text=Bamboo+Concrete+Screen" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'" alt="Rèm hoa đá đốt trúc" class="rounded border border-[#d6cbb8] shadow w-full h-60 object-cover cursor-pointer" onclick="openModal(this.src, 'Hệ thống rèm hoa đá đốt trúc độc đáo tại Dinh Độc Lập')">
+                </div>
+            </div>
+        </section>
+
+        <!-- PLATE IV: KHÔNG GIAN, HẦM CHIẾN LƯỢC & BẢO VẬT (Module 4) -->
+        <section id="plate-4" class="paper-card p-6 md:p-12 rounded-lg">
+            <div class="flex items-center justify-between mb-8 border-b border-[#d6cbb8] pb-4">
+                <div>
+                    <span class="text-xs font-sans font-semibold text-[#825e11] uppercase tracking-wider">Plate IV • Nội Thất & Hầm Ngầm</span>
+                    <h2 class="sketch-heading text-4xl md:text-5xl text-[#2b2721]">KHÔNG GIAN THAM QUAN, HẦM CHIẾN LƯỢC & BẢO VẬT</h2>
+                </div>
+            </div>
+
+            <!-- Room Tabs -->
+            <div class="flex flex-wrap gap-2 mb-6 font-sans">
+                <button onclick="switchRoom('khanh-tiet')" id="tab-khanh-tiet" class="px-4 py-2 rounded bg-[#2b2721] text-white text-sm font-medium transition">Phòng Khánh Tiết</button>
+                <button onclick="switchRoom('trinh-quoc-thu')" id="tab-trinh-quoc-thu" class="px-4 py-2 rounded bg-white text-[#2b2721] text-sm font-medium border border-[#d6cbb8] transition">Phòng Trình Quốc Thư</button>
+                <button onclick="switchRoom('noi-cac')" id="tab-noi-cac" class="px-4 py-2 rounded bg-white text-[#2b2721] text-sm font-medium border border-[#d6cbb8] transition">Phòng Nội Các</button>
+                <button onclick="switchRoom('ham-chien-luoc')" id="tab-ham-chien-luoc" class="px-4 py-2 rounded bg-white text-[#2b2721] text-sm font-medium border border-[#d6cbb8] transition">Hầm Chỉ Huy Ngầm</button>
+                <button onclick="switchRoom('bao-vat')" id="tab-bao-vat" class="px-4 py-2 rounded bg-white text-[#2b2721] text-sm font-medium border border-[#d6cbb8] transition">Bảo Vật Quốc Gia</button>
+            </div>
+
+            <!-- Room Content Box -->
+            <div id="room-content" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#f4ecd8]/50 p-6 rounded-lg border border-[#d6cbb8]">
+                <div class="lg:col-span-7 space-y-4">
+                    <h3 id="room-title" class="sketch-heading text-3xl text-[#2b2721]">Phòng Khánh Tiết (Đại Sảnh)</h3>
+                    <p id="room-desc" class="font-news text-lg text-[#2b2721]/90 leading-relaxed">
+                        Là căn phòng rộng lớn nhất trong Dinh với sức chứa lên đến 500 người. Nơi đây từng diễn ra các lễ ra mắt nội các, ký kết văn kiện ngoại giao quan trọng và các tiệc dạ yến quốc gia. Phòng nổi bật với trần cao, hệ thống đèn chùm pha lê nhập khẩu và bức tranh tường quy mô lớn.
+                    </p>
+                </div>
+                <div class="lg:col-span-5">
+                    <img id="room-img" src="https://placehold.co/800x500/2b2721/f4ecd8?text=Phong+Khanh+Tiet" onerror="this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80'" alt="Phòng Khánh Tiết" class="rounded border border-[#d6cbb8] shadow w-full h-64 object-cover cursor-pointer" onclick="openModal(this.src, document.getElementById('room-title').innerText)">
+                </div>
+            </div>
+        </section>
+
+        <!-- PLATE V: BẢO TỒN DI SẢN & SỐ HÓA 3D 2050 (Module 5) -->
+        <section id="plate-5" class="paper-card p-6 md:p-12 rounded-lg">
+            <div class="flex items-center justify-between mb-8 border-b border-[#d6cbb8] pb-4">
+                <div>
+                    <span class="text-xs font-sans font-semibold text-[#825e11] uppercase tracking-wider">Plate V • Công Nghệ Tương Lai</span>
+                    <h2 class="sketch-heading text-4xl md:text-5xl text-[#2b2721]">BẢO TỒN DI SẢN & MÔ HÌNH SỐ HÓA 3D NĂM 2050</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 font-sans">
+                <div class="p-6 rounded bg-[#f4ecd8]/60 border border-[#d6cbb8] space-y-4">
+                    <div class="text-3xl">🔬</div>
+                    <h3 class="sketch-heading text-2xl text-[#2b2721]">Biện Pháp Bảo Tồn Khoa Học</h3>
+                    <ul class="space-y-2 text-sm text-[#2b2721]/90 font-news leading-relaxed">
+                        <li>• Kiểm định định kỳ kết cấu bê tông cốt thép và tu bổ nội thất nguyên bản.</li>
+                        <li>• Quét laser 3D toàn bộ không gian tòa nhà, tạo bản sao số (Digital Twin) lưu trữ hồ sơ phục vụ tu bổ.</li>
+                        <li>• Phát triển Bảo tàng Thông minh (Smart Museum) tích hợp AR và Audio Guide đa ngôn ngữ.</li>
+                        <li>• Chăm sóc hệ sinh thái cây xanh trăm tuổi, giảm thiểu rác thải nhựa, điều tiết luồng khách hợp lý.</li>
+                    </ul>
+                </div>
+
+                <div class="p-6 rounded bg-[#f4ecd8]/60 border border-[#d6cbb8] space-y-4">
+                    <div class="text-3xl">👓</div>
+                    <h3 class="sketch-heading text-2xl text-[#2b2721]">Mô Hình "Dinh Độc Lập 2050"</h3>
+                    <ul class="space-y-2 text-sm text-[#2b2721]/90 font-news leading-relaxed">
+                        <li>• <strong>Mô hình 3D toàn diện:</strong> Du khách toàn cầu đeo kính thực tế ảo (VR) khám phá mọi ngóc ngách từ xa với độ chi tiết tuyệt đối.</li>
+                        <li>• <strong>Dòng thời gian tương tác:</strong> Trải nghiệm quá trình chuyển biến từ Dinh Norodom 1868 đến Dinh Độc Lập 1966 và sự kiện 1975.</li>
+                        <li>• <strong>Thư viện Tư liệu Số giáo dục:</strong> Kết nối dữ liệu di sản với các trường học, giúp học sinh tiếp cận lịch sử sinh động.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLATE VI: FAQ – GIẢI MÃ DINH ĐỘC LẬP (Module 6) -->
+        <section id="plate-6" class="paper-card p-6 md:p-12 rounded-lg">
+            <div class="flex items-center justify-between mb-8 border-b border-[#d6cbb8] pb-4">
+                <div>
+                    <span class="text-xs font-sans font-semibold text-[#825e11] uppercase tracking-wider">Plate VI • Hỏi Đáp Chuyên Sâu</span>
+                    <h2 class="sketch-heading text-4xl md:text-5xl text-[#2b2721]">FAQ – GIẢI MÃ DINH ĐỘC LẬP 2050</h2>
+                </div>
+            </div>
+
+            <div class="space-y-4 font-sans">
+                <!-- FAQ Item 1 -->
+                <div class="border border-[#d6cbb8] rounded bg-white overflow-hidden">
+                    <button onclick="toggleFaq(1)" class="w-full text-left p-4 font-bold text-[#2b2721] flex justify-between items-center hover:bg-[#f4ecd8]/40 transition">
+                        <span>Q1: Dưới lòng Dinh Độc Lập có hệ thống gì đặc biệt?</span>
+                        <i id="faq-icon-1" class="fa-solid fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-1" class="hidden p-4 pt-0 font-news text-lg text-[#6b5b4e] leading-relaxed border-t border-[#d6cbb8]/50">
+                        Dưới lòng Dinh là hệ thống hầm ngầm chiến lược kiên cố chịu được bom đạn hạng nặng, bao gồm phòng tác chiến, trung tâm bưu điện viễn thông, đài phát thanh và phòng làm việc khẩn cấp của nguyên thủ.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-[#d6cbb8] rounded bg-white overflow-hidden">
+                    <button onclick="toggleFaq(2)" class="w-full text-left p-4 font-bold text-[#2b2721] flex justify-between items-center hover:bg-[#f4ecd8]/40 transition">
+                        <span>Q2: Vì sao Dinh Độc Lập có sân đỗ trực thăng trên mái?</span>
+                        <i id="faq-icon-2" class="fa-solid fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-2" class="hidden p-4 pt-0 font-news text-lg text-[#6b5b4e] leading-relaxed border-t border-[#d6cbb8]/50">
+                        Sân đỗ trực thăng trên sân thượng được thiết kế để phục vụ nhu cầu di chuyển công vụ khẩn cấp của lãnh đạo trước năm 1975. Tại đây hiện trưng bày chiếc trực thăng UH-1 lịch sử.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-[#d6cbb8] rounded bg-white overflow-hidden">
+                    <button onclick="toggleFaq(3)" class="w-full text-left p-4 font-bold text-[#2b2721] flex justify-between items-center hover:bg-[#f4ecd8]/40 transition">
+                        <span>Q3: Nếu Dinh Độc Lập có thể kể chuyện, nơi nào tiết lộ nhiều bí mật nhất?</span>
+                        <i id="faq-icon-3" class="fa-solid fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-3" class="hidden p-4 pt-0 font-news text-lg text-[#6b5b4e] leading-relaxed border-t border-[#d6cbb8]/50">
+                        Hệ thống phòng tác chiến dưới tầng hầm và Phòng Nội các – nơi đưa ra những quyết định quân sự, chính trị quan trọng trong lịch sử đương đại.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="border border-[#d6cbb8] rounded bg-white overflow-hidden">
+                    <button onclick="toggleFaq(4)" class="w-full text-left p-4 font-bold text-[#2b2721] flex justify-between items-center hover:bg-[#f4ecd8]/40 transition">
+                        <span>Q4: Năm 2050, chúng ta có thể “du hành thời gian” tại Dinh Độc Lập không?</span>
+                        <i id="faq-icon-4" class="fa-solid fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-4" class="hidden p-4 pt-0 font-news text-lg text-[#6b5b4e] leading-relaxed border-t border-[#d6cbb8]/50">
+                        Hoàn toàn có thể! Nhờ công nghệ số hóa 3D, thực tế ảo (VR) và AI tái dựng lịch sử, du khách có thể sống lại những thời khắc lịch sử một cách chân thực nhất từ bất kỳ đâu trên thế giới.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="border border-[#d6cbb8] rounded bg-white overflow-hidden">
+                    <button onclick="toggleFaq(5)" class="w-full text-left p-4 font-bold text-[#2b2721] flex justify-between items-center hover:bg-[#f4ecd8]/40 transition">
+                        <span>Q5: Làm sao để di tích tồn tại thêm 100 năm mà vẫn giữ nguyên giá trị?</span>
+                        <i id="faq-icon-5" class="fa-solid fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-5" class="hidden p-4 pt-0 font-news text-lg text-[#6b5b4e] leading-relaxed border-t border-[#d6cbb8]/50">
+                        Bằng cách kết hợp bảo tồn nguyên trạng bằng khoa học vật liệu, số hóa tư liệu 3D và phát triển du lịch sinh thái bền vững, kiểm soát lượng khách tham quan hợp lý.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="border border-[#d6cbb8] rounded bg-white overflow-hidden">
+                    <button onclick="toggleFaq(6)" class="w-full text-left p-4 font-bold text-[#2b2721] flex justify-between items-center hover:bg-[#f4ecd8]/40 transition">
+                        <span>Q6: Bài học lớn nhất mà Dinh Độc Lập gửi gắm đến tương lai là gì?</span>
+                        <i id="faq-icon-6" class="fa-solid fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-6" class="hidden p-4 pt-0 font-news text-lg text-[#6b5b4e] leading-relaxed border-t border-[#d6cbb8]/50">
+                        Đó là giá trị thiêng liêng của hòa bình, tinh thần tự cường độc lập dân tộc và bài học sâu sắc về sự hòa hợp, đoàn kết toàn dân để xây dựng đất nước phát triển.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLATE VII: CẨM NANG THAM QUAN, BẢNG GIÁ VÉ & QUY ĐỊNH (Module 7) -->
+        <section id="plate-7" class="paper-card p-6 md:p-12 rounded-lg">
+            <div class="flex items-center justify-between mb-8 border-b border-[#d6cbb8] pb-4">
+                <div>
+                    <span class="text-xs font-sans font-semibold text-[#825e11] uppercase tracking-wider">Plate VII • Cẩm Nang & Biểu Phí</span>
+                    <h2 class="sketch-heading text-4xl md:text-5xl text-[#2b2721]">CẨM NANG THAM QUAN & QUY ĐỊNH BẮT BUỘC</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 font-sans mb-12">
+                <div class="space-y-4 p-6 rounded bg-[#f4ecd8]/60 border border-[#d6cbb8]">
+                    <h3 class="sketch-heading text-2xl text-[#2b2721]">Thông Tin Địa Chỉ & Giờ Mở Cửa</h3>
+                    <p class="text-sm font-news text-[#2b2721]/90 leading-relaxed">
+                        <strong>Địa chỉ di tích:</strong> Cổng chính số 135 Nam Kỳ Khởi Nghĩa hoặc Cổng số 106 Nguyễn Du, Phường Bến Thành, Quận 1, TP. Hồ Chí Minh.<br>
+                        <strong>Giờ tham quan:</strong> Từ 07:00 đến 18:00 tất cả các ngày trong tuần (kể cả Lễ, Tết).<br>
+                        • Giờ bán vé cổng 106 Nguyễn Du: Kết thúc lúc 16:00.<br>
+                        • Giờ bán vé cổng 135 Nam Kỳ Khởi Nghĩa: Bán vé đến 18:00.
+                    </p>
+                </div>
+
+                <div class="space-y-4 p-6 rounded bg-[#f4ecd8]/60 border border-[#d6cbb8]">
+                    <h3 class="sketch-heading text-2xl text-[#2b2721]">Nội Quy Tham Quan Bắt Buộc</h3>
+                    <ul class="text-xs font-news text-[#2b2721]/90 space-y-2 leading-relaxed">
+                        <li>1. <strong>Trang phục:</strong> Lịch sự, chỉnh tề, tuân thủ hướng dẫn của nhân viên di tích.</li>
+                        <li>2. <strong>Trật tự:</strong> Giữ trật tự chung, không chen lấn, ăn uống hay xả rác bừa bãi.</li>
+                        <li>3. <strong>Bảo vệ hiện vật:</strong> Tuyệt đối không tự ý chạm vào, bước qua rào chắn hiện vật.</li>
+                        <li>4. <strong>An ninh:</strong> Không mang chất cháy nổ, vũ khí, hóa chất độc hại vào khu vực trưng bày.</li>
+                        <li>5. <strong>Chụp ảnh:</strong> Chỉ chụp ảnh khu vực cho phép (nghiêm cấm dùng đèn flash với tranh sơn mài).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Pricing Table & Ticket Calculator -->
+            <div>
+                <h3 class="sketch-heading text-3xl text-[#2b2721] mb-4">Bảng Giá Vé Niêm Yết & Tính Tiền Nhanh</h3>
+                <div class="overflow-x-auto font-sans mb-6">
+                    <table class="w-full text-left border-collapse border border-[#d6cbb8] bg-white text-sm">
+                        <thead>
+                            <tr class="bg-[#f4ecd8] text-[#2b2721]">
+                                <th class="p-3 border border-[#d6cbb8]">Đối Tượng Du Khách</th>
+                                <th class="p-3 border border-[#d6cbb8]">Vé Toàn Bộ Di Tích & Nhà Trưng Bày</th>
+                                <th class="p-3 border border-[#d6cbb8]">Vé Tham Quan Giới Hạn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-3 border border-[#d6cbb8] font-medium">Người lớn (18 – 59 tuổi)</td>
+                                <td class="p-3 border border-[#d6cbb8]">80.000 VNĐ</td>
+                                <td class="p-3 border border-[#d6cbb8]">40.000 VNĐ</td>
+                            </tr>
+                            <tr class="bg-[#f7f3ec]/50">
+                                <td class="p-3 border border-[#d6cbb8] font-medium">Sinh viên Việt Nam (có thẻ SV)</td>
+                                <td class="p-3 border border-[#d6cbb8]">40.000 VNĐ</td>
+                                <td class="p-3 border border-[#d6cbb8]">20.000 VNĐ</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 border border-[#d6cbb8] font-medium">Người cao tuổi (từ 60 tuổi trở lên)</td>
+                                <td class="p-3 border border-[#d6cbb8]">40.000 VNĐ</td>
+                                <td class="p-3 border border-[#d6cbb8]">20.000 VNĐ</td>
+                            </tr>
+                            <tr class="bg-[#f7f3ec]/50">
+                                <td class="p-3 border border-[#d6cbb8] font-medium">Trẻ em / Học sinh (6 – 17 tuổi)</td>
+                                <td class="p-3 border border-[#d6cbb8]">20.000 VNĐ</td>
+                                <td class="p-3 border border-[#d6cbb8]">10.000 VNĐ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Interactive Calculator Widget -->
+                <div class="p-6 rounded bg-[#f4ecd8] border border-[#d6cbb8] grid grid-cols-1 md:grid-cols-3 gap-4 items-center font-sans">
+                    <div>
+                        <label class="block text-xs font-bold text-[#2b2721] mb-1">Chọn loại vé:</label>
+                        <select id="calc-type" class="w-full p-2 rounded border border-[#6b5b4e] bg-white text-sm" onchange="calculateTotal()">
+                            <option value="80000">Người lớn - Toàn bộ (80.000đ)</option>
+                            <option value="40000">Người lớn - Giới hạn / Sinh viên / Người cao tuổi - Toàn bộ (40.000đ)</option>
+                            <option value="20000">Sinh viên / Người cao tuổi - Giới hạn / Trẻ em - Toàn bộ (20.000đ)</option>
+                            <option value="10000">Trẻ em - Giới hạn (10.000đ)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-[#2b2721] mb-1">Số lượng vé:</label>
+                        <input type="number" id="calc-qty" value="1" min="1" max="100" class="w-full p-2 rounded border border-[#6b5b4e] bg-white text-sm" oninput="calculateTotal()">
+                    </div>
+                    <div class="text-right md:text-center pt-2 md:pt-0">
+                        <div class="text-xs text-[#6b5b4e]">Tổng tiền tạm tính:</div>
+                        <div id="calc-total" class="sketch-heading text-3xl text-[#9e2a2b]">80.000 VNĐ</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-20 border-t border-[#d6cbb8] bg-[#f7f3ec] py-8 px-4 text-center font-sans text-xs text-[#6b5b4e]">
+        <div class="max-w-7xl mx-auto space-y-2">
+            <p class="font-serif text-xl text-[#2b2721]">🏛️ Dinh Độc Lập – Hội Trường Thống Nhất</p>
+            <p>Ứng dụng Sổ tay Di sản Kỹ thuật số & Tầm nhìn Trực quan 2050.</p>
+            <p class="text-[10px] text-[#2b2721]/60">© 2026 Architectural Heritage & Digital Twin Initiative. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal Viewer -->
+    <div id="image-modal" class="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 hidden" onclick="closeModal()">
+        <div class="relative max-w-4xl w-full bg-[#f7f3ec] rounded-lg overflow-hidden shadow-2xl p-4" onclick="event.stopPropagation()">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-xl font-bold bg-[#2b2721] text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-[#9e2a2b] transition">×</button>
+            <img id="modal-img" src="" alt="Zoomed view" class="w-full max-h-[70vh] object-contain rounded mb-4 border border-[#d6cbb8]">
+            <p id="modal-caption" class="text-center font-news text-lg text-[#2b2721]"></p>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Smooth scroll to section
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if(el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Zoom controller
+        let currentZoom = 1.0;
+        function adjustZoom(amount) {
+            currentZoom = Math.max(0.8, Math.min(1.4, currentZoom + amount));
+            const container = document.getElementById('zoom-container');
+            container.style.transform = `scale(${currentZoom})`;
+            document.getElementById('zoom-level').innerText = Math.round(currentZoom * 100) + '%';
+        }
+
+        // Magnifying glass toggle
+        let magnifierActive = false;
+        const mag = document.getElementById('magnifier');
+        const magContent = document.getElementById('magnifier-content');
+        const magBtn = document.getElementById('mag-btn');
+
+        function toggleMagnifier() {
+            magnifierActive = !magnifierActive;
+            if(magnifierActive) {
+                mag.style.display = 'block';
+                magBtn.classList.add('bg-[#2b2721]', 'text-white');
+                magContent.innerHTML = document.body.innerHTML;
+            } else {
+                mag.style.display = 'none';
+                magBtn.classList.remove('bg-[#2b2721]', 'text-white');
+            }
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            if(!magnifierActive) return;
+            const x = e.clientX;
+            const y = e.clientY;
+            mag.style.left = (x - 80) + 'px';
+            mag.style.top = (y - 80) + 'px';
+            magContent.style.transform = `translate(${-x * 1.5 + 80}px, ${-y * 1.5 + 80}px) scale(1.5)`;
+        });
+
+        // Chinese character tabs data
+        const chineseData = {
+            ji: {
+                symbol: '吉',
+                title: 'Chữ CÁT (吉) – Ý Niệm May Mắn & Thịnh Vượng',
+                desc: 'Toàn bộ bình diện mặt bằng tổng thể của Dinh được quy hoạch uốn lượn sắp đặt gợi thành hình chữ Cát. Vị trí trung tâm của hình chữ này chính là Phòng Trình Quốc thư – nơi tiếp đón đại diện các quốc gia trên thế giới, gửi gắm ước nguyện hòa bình, may mắn cho dân tộc.'
+            },
+            kou: {
+                symbol: '口',
+                title: 'Chữ KHẨU (口) – Biểu Tượng Ngôn Luận & Tự Do',
+                desc: 'Lầu thượng của Dinh (ngay bên dưới cột cờ) được thiết kế thành một lầu vọng cảnh mang tên "Tứ phương vô sự lầu". Khung không gian hình chữ nhật rỗng này mô phỏng hình chữ Khẩu, đề cao tầm quan trọng của giáo dục, tự do ngôn luận và tư tưởng độc lập.'
+            },
+            zhong: {
+                symbol: '中',
+                title: 'Chữ TRUNG (中) – Tinh Thần Trung Kiên & Trung Dung',
+                desc: 'Cột cờ chính giữa công trình cắm thẳng từ đỉnh mái xuyên qua tâm của chữ Khẩu trên lầu thượng xuống phía dưới. Nét sổ dọc này kết hợp với chữ Khẩu tạo thành chữ Trung, nhắc nhở những người lãnh đạo về lòng trung thành tuyệt đối với tổ quốc và nhân dân.'
+            },
+            san: {
+                symbol: '三',
+                title: 'Chữ TAM (三) – Ba Đòn Bẩy Nhân - Minh - Võ',
+                desc: 'Ba đường gạch ngang nằm song song ở mặt tiền (bao gồm ban công danh dự tầng 1, mái hiên lầu tứ phương và mái hiên sảnh chính tầng trệt) hợp thành chữ Tam, tượng trưng cho ba phẩm chất cốt lõi của một nguyên thủ: Nhân, Minh và Võ.'
+            },
+            zhu: {
+                symbol: '主',
+                title: 'Chữ CHỦ (主) – Khai Sinh Chủ Quyền Quốc Gia',
+                desc: 'Khi nối ba nét ngang của chữ Tam bằng nét sổ dọc của cột cờ, hình khối chuyển thành chữ Vương, và khi thêm một nét chấm trên đỉnh (được đại diện bởi kỳ đài mang lá cờ tổ quốc), cấu trúc biến thành chữ Chủ – khẳng định chủ quyền độc lập và tự chủ dân tộc.'
+            },
+            xing: {
+                symbol: '興',
+                title: 'Chữ HƯNG (興) – Lời Cầu Chúc Quốc Thái Dân An',
+                desc: 'Khi quan sát toàn bộ mặt đứng phía trước của Dinh bao gồm các hàng cột, ban công, mái hiên và bức rèm bê tông, tổng thể hình khối gợi lên hình chữ Hưng, mang ý nghĩa cầu chúc cho quốc gia luôn hưng thịnh và phát triển trường tồn.'
+            }
+        };
+
+        function showChineseChar(key) {
+            const data = chineseData[key];
+            document.getElementById('char-symbol').innerText = data.symbol;
+            document.getElementById('char-title').innerText = data.title;
+            document.getElementById('char-desc').innerText = data.desc;
+
+            // Highlight selected button
+            ['ji', 'kou', 'zhong', 'san', 'zhu', 'xing'].forEach(k => {
+                const btn = document.getElementById('btn-' + k);
+                if(k === key) {
+                    btn.classList.add('bg-[#2b2721]', 'text-white');
+                    btn.classList.remove('bg-white');
+                } else {
+                    btn.classList.remove('bg-[#2b2721]', 'text-white');
+                    btn.classList.add('bg-white');
+                }
+            });
+        }
+
+        // Room interior tabs data
+        const roomData = {
+            'khanh-tiet': {
+                title: 'Phòng Khánh Tiết (Đại Sảnh)',
+                desc: 'Là căn phòng rộng lớn nhất trong Dinh với sức chứa lên đến 500 người. Nơi đây từng diễn ra các lễ ra mắt nội các, ký kết văn kiện ngoại giao quan trọng và các tiệc dạ yến quốc gia. Phòng nổi bật với trần cao, hệ thống đèn chùm pha lê nhập khẩu và bức tranh tường quy mô lớn.',
+                img: 'https://placehold.co/800x500/2b2721/f4ecd8?text=Phong+Khanh+Tiet'
+            },
+            'trinh-quoc-thu': {
+                title: 'Phòng Trình Quốc Thư',
+                desc: 'Nơi các Đại sứ quốc tế đến trình quốc thư lên nguyên thủ. Điểm nhấn vô giá của phòng là bức tranh sơn mài cổ truyền "Bình Ngô Đại Cáo" gồm 40 tấm ghép lại, do danh họa Nguyễn Văn Minh thực hiện miêu tả khí thế hào hùng và khung cảnh thanh bình.',
+                img: 'https://placehold.co/800x500/2b2721/f4ecd8?text=Phong+Trinh+Quoc+Thu'
+            },
+            'noi-cac': {
+                title: 'Phòng Nội Các',
+                desc: 'Nơi tổ chức các phiên họp kín của chính quyền cũ. Căn phòng được trang bị bàn họp hình oval lớn, hệ thống mành che nắng nghệ thuật và các thiết bị thu âm, bảo mật hiện đại thời bấy giờ.',
+                img: 'https://placehold.co/800x500/2b2721/f4ecd8?text=Phong+Noi+Cac'
+            },
+            'ham-chien-luoc': {
+                title: 'Trái Tim Chỉ Huy Dưới Lòng Đất (Hầm Ngầm)',
+                desc: 'Tầng hầm nằm sâu dưới lòng Dinh, đúc bằng bê tông cốt thép dày đặc biệt chống bom đạn nặng 4.000 tấn. Bao gồm phòng tác chiến, trung tâm bưu điện viễn thông với các bản đồ tác chiến gốc và máy vô tuyến điện.',
+                img: 'https://placehold.co/800x500/2b2721/f4ecd8?text=Ham+Chien+Luoc'
+            },
+            'bao-vat': {
+                title: 'Bộ Sưu Tập Bảo Vật Quốc Gia (Xe Tăng 390 & 843)',
+                desc: 'Xe tăng 390 (Type 59) do Đại đội trưởng Vũ Đăng Toàn chỉ huy húc văng cổng chính Dinh trưa 30/04/1975 và xe tăng 843. Cả hai hiện là Bảo vật Quốc gia trưng bày trên thảm cỏ trước Dinh.',
+                img: 'https://placehold.co/800x500/2b2721/f4ecd8?text=Xe+Tang+Bao+Vat'
+            }
+        };
+
+        function switchRoom(roomKey) {
+            const data = roomData[roomKey];
+            document.getElementById('room-title').innerText = data.title;
+            document.getElementById('room-desc').innerText = data.desc;
+            document.getElementById('room-img').src = data.img;
+
+            ['khanh-tiet', 'trinh-quoc-thu', 'noi-cac', 'ham-chien-luoc', 'bao-vat'].forEach(k => {
+                const btn = document.getElementById('tab-' + k);
+                if(k === roomKey) {
+                    btn.className = 'px-4 py-2 rounded bg-[#2b2721] text-white text-sm font-medium transition';
+                } else {
+                    btn.className = 'px-4 py-2 rounded bg-white text-[#2b2721] text-sm font-medium border border-[#d6cbb8] transition';
+                }
+            });
+        }
+
+        // FAQ Toggle accordion
+        function toggleFaq(num) {
+            const ans = document.getElementById('faq-ans-' + num);
+            const icon = document.getElementById('faq-icon-' + num);
+            if(ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                ans.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Ticket Calculator
+        function calculateTotal() {
+            const price = parseInt(document.getElementById('calc-type').value);
+            const qty = parseInt(document.getElementById('calc-qty').value) || 1;
+            const total = price * qty;
+            document.getElementById('calc-total').innerText = total.toLocaleString('vi-VN') + ' VNĐ';
+        }
+
+        // Modal viewer
+        function openModal(src, caption) {
+            document.getElementById('modal-img').src = src;
+            document.getElementById('modal-caption').innerText = caption;
+            document.getElementById('image-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('image-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
